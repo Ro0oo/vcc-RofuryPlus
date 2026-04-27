@@ -1,0 +1,21 @@
+{
+  "name": "Ro Studio Packages",
+  "author": "RoOoo",
+  "id": "com.ro0oo.vpm",
+  "url": "https://github.com/Ro0oo/vcc-RofuryPlus/index.json",
+  "packages": {
+    "com.ro0oo.rofury-plus": {
+      "versions": {
+        "1.9.0": {
+          "name": "com.ro0oo.rofury-plus",
+          "displayName": "RoFury+",
+          "version": "1.9.0",
+          "url": "https://github.com/Ro0oo/vcc-RofuryPlus/releases/download/1.9.0/com.ro0oo.rofury-plus-1.9.0.zip",
+          "dependencies": {
+            "com.vrchat.avatars": "^3.5.0"
+          }
+        }
+      }
+    }
+  }
+}
