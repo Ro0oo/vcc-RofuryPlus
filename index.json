@@ -2,7 +2,7 @@
   "name": "Ro Studio Packages",
   "author": "RoOoo",
   "id": "com.ro0oo.vpm",
-  "url": "https://github.com/Ro0oo/vcc-RofuryPlus/tree/Ro0oo-patch-1/index.json",
+  "url": "https://github.com/Ro0oo/vcc-RofuryPlus/index.json",
   "packages": {
     "com.ro0oo.rofury-plus": {
       "versions": {
