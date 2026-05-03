@@ -1,0 +1,15 @@
+{
+  "name": "com.ro0oo.rofury-plus",
+  "version": "1.9.4",
+  "displayName": "RoFury+",
+  "description": "Custom Unity editor tools and utilities.",
+  "unity": "2022.3",
+  "author": {
+    "name": "RoOoo",
+    "email": "roremo105@gmail.com"
+  },
+  "vpmDependencies": {
+    "com.vrchat.avatars": "^3.5.0",
+    "com.vrcfury.vrcfury": "^1.0.0"
+  }
+}
