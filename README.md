@@ -1,7 +1,7 @@
 
 <div align="center">
 
-<img src="assets/RoFury%2B.png" alt="RoFury+" width="420" />
+<img src="Assets/RoFury%2B.png" alt="RoFury+" width="420" />
 
 ### The VRCFury add-on that does the tedious parts for you
 
