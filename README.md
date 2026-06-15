@@ -1,4 +1,4 @@
-<!-- Place your logo at the path below (or update the src). The site uses assets/rofury-logo.png -->
+
 <div align="center">
 
 <img src="assets/RoFury+.png" alt="RoFury+" width="420" />
