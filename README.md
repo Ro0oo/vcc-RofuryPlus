@@ -1,7 +1,7 @@
 <!-- Place your logo at the path below (or update the src). The site uses assets/rofury-logo.png -->
 <div align="center">
 
-<img src="assets/rofury-logo.png" alt="RoFury+" width="420" />
+<img src="assets/RoFury+.png" alt="RoFury+" width="420" />
 
 ### The VRCFury add-on that does the tedious parts for you
 
