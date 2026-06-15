@@ -1,76 +1,82 @@
-# VPM Package Template
+<!-- Place your logo at the path below (or update the src). The site uses assets/rofury-logo.png -->
+<div align="center">
 
-Starter for making Packages, including automation for building and publishing them.
+<img src="assets/rofury-logo.png" alt="RoFury+" width="420" />
 
-Once you're all set up, you'll be able to push changes to this repository and have .zip and .unitypackage versions automatically generated, and a listing made which works in the VPM for delivering updates for this package. If you want to make a listing with a variety of packages, check out our [template-package-listing](https://github.com/vrchat-community/template-package-listing) repo.
+### The VRCFury add-on that does the tedious parts for you
 
-## ▶ Getting Started
+Smart outfit setup, a visual path tree, bulk editing and more — installs in **one click** through the VRChat Creator Companion.
 
-* Press [![Use This Template](https://user-images.githubusercontent.com/737888/185467681-e5fdb099-d99f-454b-8d9e-0760e5a6e588.png)](https://github.com/vrchat-community/template-package/generate)
-to start a new GitHub project based on this template.
-  * Choose a fitting repository name and description.
-  * Set the visibility to 'Public'. You can also choose 'Private' and change it later.
-  * You don't need to select 'Include all branches.'
-* Clone this repository locally using Git.
-  * If you're unfamiliar with Git and GitHub, [visit GitHub's documentation](https://docs.github.com/en/get-started/quickstart/git-and-github-learning-resources) to learn more.
-* Add the folder to Unity Hub and open it as a Unity Project.
-* After opening the project, wait while the VPM resolver is downloaded and added to your project.
-  * This gives you access to the VPM Package Maker and Package Resolver tools.
+<br />
 
-## 🚇 Migrating Assets Package
-Full details at [Converting Assets to a VPM Package](https://vcc.docs.vrchat.com/guides/convert-unitypackage)
+[![Add to VCC](https://img.shields.io/badge/%2B%20Add%20to%20VCC-ff8a1e?style=for-the-badge&logoColor=white)](vcc://vpm/addRepo?url=https://ro0oo.github.io/vcc-RofuryPlus/index.json)
+&nbsp;
+[![Listing](https://img.shields.io/badge/VPM%20Listing-2bc4f0?style=for-the-badge)](https://ro0oo.github.io/vcc-RofuryPlus/)
 
-## ✏️ Working on Your Package
+</div>
 
-* Delete the "Packages/com.vrchat.demo-template" directory or reuse it for your own package.
-  * If you reuse the package, don't forget to rename it and add generated meta files to your repository!
-* Update the `.gitignore` file in the "Packages" directory to include your package.
-  * For example, change `!com.vrchat.demo-template` to `!com.username.package-name`.
-  * `.gitignore` files normally *exclude* the contents of your "Packages" directory. This `.gitignore` in this template show how to *include* the demo package. You can easily change this out for your own package name.
-* Open the Unity project and work on your package's files in your favorite code editor.
-* When you're ready, commit and push your changes.
-* Once you've set up the automation as described below, you can easily publish new versions.
+---
 
-## 🤖 Setting up the Automation
+## What is RoFury+?
 
-Create a repository variable with the name and value described below.
-For details on how to create repository variables, see [Creating Configuration Variables for a Repository](https://docs.github.com/en/actions/learn-github-actions/variables#creating-configuration-variables-for-a-repository).
-Make sure you are creating a **repository variable**, and not a **repository secret**.
+RoFury+ is a community-made **add-on for [VRCFury](https://vrcfury.com)**. It layers the
+quality-of-life tools VRCFury is missing on top of your normal workflow — no rewiring, no
+fighting the inspector. Build toggles, outfits, paths and more, faster.
 
-* `PACKAGE_NAME`: the name of your package, like `com.vrchat.demo-template`.
+> **Requires VRCFury.** RoFury+ is added through the same VRChat Creator Companion (VCC).
 
-Finally, go to the "Settings" page for your repo, then choose "Pages", and look for the heading "Build and deployment". Change the "Source" dropdown from "Deploy from a branch" to "GitHub Actions".
+---
 
-That's it!
-Some other notes:
-* We highly recommend you keep the existing folder structure of this template.
-  * The root of the project should be a Unity project.
-  * Your packages should be in the "Packages" directory.
-  * If you deviate from this folder structure, you'll need to update the paths that assume your package is in the "Packages" directory on lines 24, 38, 41 and 57.
-* If you want to store and generate your web files in a folder other than "Website" in the root, you can change the `listPublicDirectory` item [here in build-listing.yml](.github/workflows/build-listing.yml#L17).
+## Install
 
-## 🎉 Publishing a Release
+1. **Add to VCC** — click the button above. Your Creator Companion opens with the RoFury+ listing ready to add.
+2. **Add it to your project** — in VCC, open the avatar project you're working on and add the RoFury+ package.
+3. **Open Unity and build** — use the RoFury+ tools in the Unity toolbar and start creating. VRCFury handles the rest.
 
-You can make a release by running the [Build Release](.github/workflows/release.yml) action. The version specified in your `package.json` file will be used to define the version of the release.
+Button not working? Add this repo URL manually in VCC → Settings → Packages → Add Repository:
 
-## 📃 Rebuilding the Listing
+```
+https://ro0oo.github.io/vcc-RofuryPlus/index.json
+```
 
-Whenever you make a change to a release - manually publishing it, or manually creating, editing or deleting a release, the [Build Repo Listing](.github/workflows/build-listing.yml) action will make a new index of all the releases available, and publish them as a website hosted fore free on [GitHub Pages](https://pages.github.com/). This listing can be used by the VPM to keep your package up to date, and the generated index page can serve as a simple landing page with info for your package. The URL for your package will be in the format `https://username.github.io/repo-name`.
+---
 
-## 🏠 Customizing the Landing Page (Optional)
+## Dev log
 
-The action which rebuilds the listing also publishes a landing page. The source for this page is in `Website/index.html`. The automation system uses [Scriban](https://github.com/scriban/scriban) to fill in the objects like `{{ this }}` with information from the latest release's manifest, so it will stay up-to-date with the name, id and description that you provide there. You are welcome to modify this page however you want - just use the existing `{{ template.objects }}` to fill in that info wherever you like. The entire contents of your "Website" folder are published to your GitHub Page each time.
+Newest first. Each release adds notes tagged **New**, **Improved** or **Fixed**.
 
-## 💻 Technical Stuff
+### v2 · Latest release
 
-You are welcome to make your own changes to the automation process to make it fit your needs, and you can create Pull Requests if you have some changes you think we should adopt. Here's some more info on the included automation:
+**New**
+- **Hue Shift Generator** — brand-new color tooling. Generate hue shifts that just work across PC, Quest & Particles.
+- **The Blendshape Hub** — a whole new dedicated panel for your blendshapes, plus a few clicking secrets to discover.
 
-### Build Release Action
-[release.yml](/.github/workflows/release.yml)
+**Improved**
+- **Free-movable panel** — the main panel now has movable toggles and folders. Arrange your layout how you like it.
+- **Where are my toggles?** — a new Find button on toggles. No more endless scrolling.
+- **Outfit Creator, leveled up** — now links your Armature & Blendshapes for you, and it's smarter. In this economy.
 
-This is a composite action combining a variety of existing GitHub Actions and some shell commands to create both a .zip of your Package and a .unitypackage. It creates a release which is named for the `version` in the `package.json` file found in your target Package, and publishes the zip, the unitypackage and the package.json file to this release.
+### v1 · First release
 
-### Build Repo Listing
-[build-listing.yml](.github/workflows/build-listing.yml)
+**New**
+- **Smart Outfit Creator** — drop in clothing and RoFury+ wires the armature for you, with **Auto-Shrink Blendshapes** to kill clipping automatically.
+- **Visual Path Tree Editor** — see your whole avatar hierarchy as a tree. Find, retarget and fix broken paths without hunting through the inspector.
+- **Bulk Path Manager** — re-point dozens of paths at once. Perfect for swapping a base mesh or migrating an old setup.
+- **Copy / Paste Actions** — copy toggles, actions and whole setups between avatars. Stop rebuilding the same menu twice.
+- …and a little more to discover the moment you start building.
 
-This is a composite action which builds a vpm-compatible [Repo Listing](https://vcc.docs.vrchat.com/vpm/repos) based on the releases you've created. In order to find all your releases and combine them into a listing, it checks out [another repository](https://github.com/vrchat-community/package-list-action) which has a [Nuke](https://nuke.build/) project which includes the VPM core lib to have access to its types and methods. This project will be expanded to include more functionality in the future - for now, the action just calls its `BuildRepoListing` target.
+<!-- To add a release: copy a "### vX" block to the TOP of this section and edit the notes. -->
+
+---
+
+## Links
+
+- 🎬 **Demo video:** https://youtu.be/0sSigj1W59g
+- 📦 **VPM listing:** https://ro0oo.github.io/vcc-RofuryPlus/
+- 🐙 **Source:** https://github.com/ro0oo/vcc-RofuryPlus
+
+---
+
+<div align="center">
+<sub>RoFury+ is a community-made add-on for VRCFury. Not affiliated with or endorsed by VRChat or VRCFury.</sub>
+</div>
