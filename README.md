@@ -63,7 +63,7 @@ Newest first. Each release adds notes tagged **New**, **Improved** or **Fixed**.
 - **Visual Path Tree Editor** — see your whole avatar hierarchy as a tree. Find, retarget and fix broken paths without hunting through the inspector.
 - **Bulk Path Manager** — re-point dozens of paths at once. Perfect for swapping a base mesh or migrating an old setup.
 - **Copy / Paste Actions** — copy toggles, actions and whole setups between avatars. Stop rebuilding the same menu twice.
-- …and a little more to discover the moment you start building.
+- and a little more to discover the moment you start building.
 
 <!-- To add a release: copy a "### vX" block to the TOP of this section and edit the notes. -->
 
