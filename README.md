@@ -2,9 +2,7 @@
 
 <img src="Assets/RoFury%2B%20small.png" alt="RoFury+" width="420" />
 
-### The DLC VRCFury didn't know it needed!
-
-What if VRCFury could do more?
+### What if VRCFury could do more?
 
 <br />
 
