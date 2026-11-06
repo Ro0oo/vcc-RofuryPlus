@@ -6,7 +6,7 @@
 
 <br />
 
-[![Add to VCC](https://img.shields.io/badge/+%20Add%20to%20VCC-ff8a1e?style=for-the-badge&logoColor=white)](https://ro0oo.github.io/vcc-RofuryPlus/)
+[![Add to VCC](https://img.shields.io/badge/+%20Add%20to%20VCC-ff8a1e?style=for-the-badge&logoColor=white)](vcc://vpm/addRepo?url=https://ro0oo.github.io/vcc-RofuryPlus/index.json)
 
 </div>
 
