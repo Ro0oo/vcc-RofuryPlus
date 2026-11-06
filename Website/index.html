@@ -3,20 +3,402 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VCC Listing</title>
+  <title>RoFury+ · VCC Listing</title>
   <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+:root {
+  color-scheme: light dark;
+  --rf-orange: #ff8a1e;
+  --rf-blue: #2bc4f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 2rem 0 3rem 0;
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--neutral-foreground-rest);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--rf-blue);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+.caption1 {
+  font-size: 1rem;
+  color: var(--neutral-foreground-hover);
+}
+
+.caption2 {
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  color: var(--neutral-foreground-rest);
+}
+
+/* ── Hero ── */
+.heroLogo {
+  width: 420px;
+  max-width: 90%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.heroTagline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.addToVccBlock {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+  max-width: 90%;
+}
+
+/* ── Info cards (README sections) ── */
+.infoCard {
+  width: 100%;
+  max-width: 90%;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0 0 0;
+}
+
+.infoCard h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.35rem;
+}
+
+.infoCard p {
+  margin: 0 0 0.75rem 0;
+}
+
+.callout {
+  border-left: 4px solid var(--rf-orange);
+  padding: 0.5rem 0.75rem;
+  background-color: var(--neutral-fill-hover);
+  border-radius: 0 4px 4px 0;
+}
+
+.installSteps {
+  margin: 0 0 1rem 0;
+  padding-left: 1.25rem;
+}
+
+.installSteps li {
+  margin-bottom: 0.5rem;
+}
+
+.urlBox {
+  display: block;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  background-color: var(--neutral-fill-hover);
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.9rem;
+  word-break: break-all;
+  user-select: all;
+}
+
+/* ── Patch notes ── */
+.release {
+  margin: 1.5rem 0 0.75rem 0;
+  font-size: 1.15rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--neutral-stroke-rest, rgba(128, 128, 128, 0.3));
+}
+
+.infoCard h2 + .release {
+  margin-top: 0.25rem;
+}
+
+.releaseSub {
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--neutral-foreground-hover);
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  margin: 0.5rem 0 0.25rem 0;
+  color: #fff;
+}
+
+.tagNew { background-color: #2e9e5b; }
+.tagImproved { background-color: #2f7fd8; }
+.tagFixed { background-color: var(--rf-orange); }
+.tagRip { background-color: #6b6b6b; }
+
+.notes {
+  margin: 0.25rem 0 0.5rem 0;
+  padding-left: 1.25rem;
+}
+
+.notes li {
+  margin-bottom: 0.35rem;
+}
+
+/* ── Links ── */
+.linkColumns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 3rem;
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.linkList li {
+  margin-bottom: 0.4rem;
+}
+
+.footerNote {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--neutral-foreground-hover);
+  max-width: 90%;
+}
+
+/* ── Package list ── */
+.packages {
+  margin: 0.5rem 0 0 0;
+  max-width: 90%;
+  padding: 0.25rem;
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+#packageGrid {
+  overflow-y: auto;
+  width: 100%;
+  max-height: 40rem;
+}
+
+.packages .packageName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+
+.searchBlock {
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 90%;
+}
+
+.searchBlock .root {
+  width: 100%;
+}
+
+#searchInput {
+  width: 100%;
+}
+
+.vccUrlField {
+  min-width: 450px;
+  max-width: 90%;
+  flex-grow:1;
+}
+
+#addListingToVccHelp {
+  z-index: 11;
+}
+
+#packageInfoModal {
+  z-index: 10;
+}
+
+#rowMoreMenu {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 10;
+}
+
+#rowMoreMenu a {
+  display: block;
+  text-decoration: none;
+  color: var(--neutral-foreground-rest);
+}
+
+.bannerImage {
+  aspect-ratio: 5 / 1;
+  border-radius: 6px;
+  max-width: 90%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 0.25rem;
+}
+
+.badge {
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--neutral-fill-hover);
+}
+
+@media (max-width: 600px) {
+  .vccUrlField {
+    min-width: 0;
+    width: 100%;
+  }
+  .heroTagline {
+    font-size: 1.2rem;
+  }
+  .infoCard {
+    padding: 1rem;
+  }
+}
+
+.m-0 { margin: 0; }
+.m-1 { margin: 0.25rem; }
+.m-2 { margin: 0.5rem; }
+.m-3 { margin: 0.75rem; }
+.m-4 { margin: 1rem; }
+.m-5 { margin: 2rem; }
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-5 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-5 { margin-bottom: 2rem; }
+
+.ms-1 { margin-left: 0.25rem; }
+.ms-2 { margin-left: 0.5rem; }
+.ms-3 { margin-left: 0.75rem; }
+.ms-4 { margin-left: 1rem; }
+.ms-5 { margin-left: 2rem; }
+
+.me-1 { margin-right: 0.25rem; }
+.me-2 { margin-right: 0.5rem; }
+.me-3 { margin-right: 0.75rem; }
+.me-4 { margin-right: 1rem; }
+.me-5 { margin-right: 2rem; }
+
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-5 { padding: 2rem; }
+
+.pt-1 { padding-top: 0.25rem; }
+.pt-2 { padding-top: 0.5rem; }
+.pt-3 { padding-top: 0.75rem; }
+.pt-4 { padding-top: 1rem; }
+.pt-5 { padding-top: 2rem; }
+
+.pb-1 { padding-bottom: 0.25rem; }
+.pb-2 { padding-bottom: 0.5rem; }
+.pb-3 { padding-bottom: 0.75rem; }
+.pb-4 { padding-bottom: 1rem; }
+.pb-5 { padding-bottom: 2rem; }
+
+.ps-1 { padding-left: 0.25rem; }
+.ps-2 { padding-left: 0.5rem; }
+.ps-3 { padding-left: 0.75rem; }
+.ps-4 { padding-left: 1rem; }
+.ps-5 { padding-left: 2rem; }
+
+.pe-1 { padding-right: 0.25rem; }
+.pe-2 { padding-right: 0.5rem; }
+.pe-3 { padding-right: 0.75rem; }
+.pe-4 { padding-right: 1rem; }
+.pe-5 { padding-right: 2rem; }
+
+.w-100 { width: 100%; }
+
+.flex-1 { flex: 1; }
+
+  </style>
   <link rel="icon" href="./favicon.ico">
 </head>
 <body>
   <div class="col align-items-center content">
+
+    <!-- ═══════════ HERO ═══════════ -->
     <div id="listingInfo" class="col mb-4 w-100 align-items-center">
       {{~ if listingInfo.BannerImage; ~}}
         <div class="bannerImage" style="background-image: url({{ listingInfo.BannerImageUrl }})"></div>
       {{~ end; ~}}
-      <h1>
+      <img class="heroLogo" src="https://raw.githubusercontent.com/ro0oo/vcc-RofuryPlus/main/Assets/RoFury%2B%20small.png" alt="RoFury+" />
+      <h1 class="visuallyHidden">
         {{~ listingInfo.Name ~}}
       </h1>
+      <div class="heroTagline">What if VRCFury could do more?</div>
       {{~ if listingInfo.Description; ~}}
         <div class="caption1 mb-2">{{ listingInfo.Description }}</div>
       {{~ end; ~}}
@@ -27,14 +409,11 @@
         </fluent-tooltip>
         {{~ end; ~}}
         <div class="caption1 mb-2" id="publishedByText">Published by <a href="{{listingInfo.Author.Url}}" target="_blank">{{ listingInfo.Author.Name }}</a></div>
-        {{~ if listingInfo.InfoLink.Url ~}}
-          <div class="caption1" id="publishedByText">
-            <a href="{{listingInfo.InfoLink.Url}}" target="_blank">{{ if listingInfo.InfoLink.Text; listingInfo.InfoLink.Text; else; "Lean More"; end; }}</a>
-          </div>
-        {{~ end; ~}}
       </div>
     </div>
-    <div class="addToVccBlock mt-4 row align-items-center">
+
+    <!-- ═══════════ ADD TO VCC ═══════════ -->
+    <div class="addToVccBlock mt-2 row align-items-center">
       <fluent-text-field aria-readonly="true" id="vccUrlField" class="vccUrlField" readonly value="{{ listingInfo.Url }}">
       </fluent-text-field>
       <fluent-button appearance="accent" class="ms-2" id="vccAddRepoButton" >Add to VCC</fluent-button>
@@ -53,6 +432,7 @@
         </svg>
       </fluent-button>
     </div>
+
     <fluent-dialog id="addListingToVccHelp" hidden modal>
       <div class="col ps-4 pe-4">
         <div class="row align-items-center justify-content-between mt-3 mb-4">
@@ -94,8 +474,32 @@
         <div class="caption1 mt-4">You can read more about Package Listings <a href="https://vcc.docs.vrchat.com" target="_blank">on the VCC docs</a></div>
       </div>
     </fluent-dialog>
+
+    <!-- ═══════════ WHAT IS ═══════════ -->
+    <fluent-card class="infoCard">
+      <h2>What is RoFury+?</h2>
+      <p>
+        RoFury+ is a community-made <b>add-on for <a href="https://vrcfury.com" target="_blank">VRCFury</a></b>.
+        It adds a pile of quality-of-life upgrades to VRCFury.
+      </p>
+      <div class="callout"><b>Requires VRCFury.</b></div>
+    </fluent-card>
+
+    <!-- ═══════════ INSTALL ═══════════ -->
+    <fluent-card class="infoCard">
+      <h2>Install</h2>
+      <ol class="installSteps">
+        <li><b>Add to VCC</b> — hit the <b>Add to VCC</b> button at the top of this page. Your Creator Companion opens with RoFury+ ready to add.</li>
+        <li><b>Add it to your project</b> — in VCC, open the avatar project you're working on and add the RoFury+ package.</li>
+        <li><b>Open Unity and build</b> — use the RoFury+ tools in the Unity toolbar and start creating. VRCFury handles the rest.</li>
+      </ol>
+      <p class="mb-1">Button not working? Add this repo URL manually in VCC → Settings → Packages → Add Repository:</p>
+      <code class="urlBox">{{ listingInfo.Url }}</code>
+    </fluent-card>
+
+    <!-- ═══════════ PACKAGES ═══════════ -->
     <div class="searchBlock">
-      <fluent-text-field id="searchInput" placeholder="Search packages..." type="text" autoFocus></fluent-text-field>
+      <fluent-text-field id="searchInput" placeholder="Search packages..." type="text"></fluent-text-field>
     </div>
     <fluent-menu id="rowMoreMenu" hidden>
       <fluent-menu-item id="rowMoreMenuDownload">
@@ -210,11 +614,78 @@
         {{~ end ~}}
       </fluent-data-grid>
     </fluent-card>
-    {{~ if listingInfo.InfoLink.Url ~}}
-      <div class="caption1" id="publishedByText">
-        <a href="{{listingInfo.InfoLink.Url}}" target="_blank">{{ if listingInfo.InfoLink.Text; listingInfo.InfoLink.Text; else; "Lean More"; end; }}</a>
+
+    <!-- ═══════════ PATCH NOTES ═══════════ -->
+    <fluent-card class="infoCard">
+      <h2>Patch Notes</h2>
+
+      <h3 class="release">v2 <span class="releaseSub">· Latest release</span></h3>
+
+      <div class="tag tagNew">New</div>
+      <ul class="notes">
+        <li><b>Hue Shift Generator</b> — generate hue shifts that just work across PC, Quest &amp; Particles.</li>
+        <li><b>The Blendshape Panel</b> — make blendshapes fun and easy. A few clicks is all you need.</li>
+        <li><b>UI Improvements!</b> — a pile of Unity upgrades to the Hierarchy, Inspector and Project tab.</li>
+        <li><b>Where are my toggles?</b> — a new Find button on toggles. No more endless scrolling.</li>
+        <li><b>Icon Panel</b> — snap menu icons for your toggles and folders straight from your avatar. No more screenshot, crop, import dance.</li>
+        <li><b>Leader Toggle</b> — ONE Toggle to Rule Them ALL. A toggle that turns other toggles on and off.</li>
+        <li><b>Conflict Force</b> — let two toggles turn the same object on and off without VRCFury yelling at you.</li>
+      </ul>
+
+      <div class="tag tagImproved">Improved</div>
+      <ul class="notes">
+        <li><b>Drag &amp; drop everything</b> — move toggles and folders anywhere in the main panel.</li>
+        <li><b>MORE Actions</b> — see every action at a glance.</li>
+        <li><b>Outfit Creator, leveled up</b> — now links your Armature and turns PhysBones off with the outfit.</li>
+        <li><b>Rename Paths</b> — <del>the Bulk Path Manager</del> got renamed and optimized.</li>
+        <li><b>Settings &amp; Performance!</b> — you have control.</li>
+      </ul>
+
+      <div class="tag tagFixed">Fixed</div>
+      <ul class="notes">
+        <li><b>Slashes</b> — names with a / in them no longer get mistaken for folders and split in two.</li>
+      </ul>
+
+      <div class="tag tagRip">RIP</div>
+      <ul class="notes">
+        <li><b><del>Visual Path Tree Editor</del></b> — the Main Tab took over (he does exactly what I do, BUT better).</li>
+      </ul>
+
+      <h3 class="release">v1 <span class="releaseSub">· First release</span></h3>
+
+      <div class="tag tagNew">New</div>
+      <ul class="notes">
+        <li><b>Smart Outfit Creator</b> — drop in clothing and RoFury+ wires the armature for you, with <b>Auto-Shrink Blendshapes</b> to kill clipping automatically.</li>
+        <li><b>Visual Path Tree Editor</b> — see your whole avatar hierarchy as a tree. Find, retarget and fix broken paths without hunting through the inspector.</li>
+        <li><b>Bulk Path Manager</b> — rename dozens of paths at once.</li>
+        <li><b>Copy / Paste Actions</b> — copy toggles, actions and whole setups between avatars. No more flipbook page pain.</li>
+        <li>And a little more to discover on the way.</li>
+      </ul>
+    </fluent-card>
+
+    <!-- ═══════════ LINKS ═══════════ -->
+    <fluent-card class="infoCard">
+      <div class="linkColumns">
+        <div>
+          <h2>Links</h2>
+          <ul class="linkList">
+            <li>🎬 <b>Demo video:</b> <a href="https://youtu.be/0sSigj1W59g" target="_blank">youtu.be/0sSigj1W59g</a></li>
+            <li>🐙 <b>Source:</b> <a href="https://github.com/ro0oo/vcc-RofuryPlus" target="_blank">github.com/ro0oo/vcc-RofuryPlus</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Community</h2>
+          <ul class="linkList">
+            <li>☕ <b>Support the dev:</b> <a href="https://ko-fi.com/ro0oo" target="_blank">ko-fi.com/ro0oo</a></li>
+            <li>💬 <b>Join our Discord:</b> <a href="https://discord.gg/muvp5zzEaZ" target="_blank">discord.gg/muvp5zzEaZ</a></li>
+          </ul>
+        </div>
       </div>
-    {{~ end; ~}}
+    </fluent-card>
+
+    <div class="footerNote">
+      RoFury+ is a community-made add-on for VRCFury. Not affiliated with or endorsed by VRChat or VRCFury.
+    </div>
   </div>
   <script type="module" src="app.js"></script>
 </body>
