@@ -6,7 +6,7 @@
 
 <br />
 
-[![Add to VCC](https://img.shields.io/badge/+%20Add%20to%20VCC-ff8a1e?style=for-the-badge&logoColor=white)](vcc://vpm/addRepo?url=https://ro0oo.github.io/vcc-RofuryPlus/index.json)
+[![Add to VCC](https://img.shields.io/badge/+%20Add%20to%20VCC-ff8a1e?style=for-the-badge&logoColor=white)](https://ro0oo.github.io/vcc-RofuryPlus/)
 
 </div>
 
@@ -71,7 +71,7 @@ https://ro0oo.github.io/vcc-RofuryPlus/index.json
 * **Smart Outfit Creator** — drop in clothing and RoFury+ wires the armature for you, with **Auto-Shrink Blendshapes** to kill clipping automatically.
 * **Visual Path Tree Editor** — see your whole avatar hierarchy as a tree. Find, retarget and fix broken paths without hunting through the inspector.
 * **Bulk Path Manager** — rename dozens of paths at once.
-* **Copy / Paste Actions** — copy toggles, actions and whole setups between avatars. No more flipbook page pain.
+* **Copy / Paste Actions** — copy toggles, actions and whole setups between avatars. No more flipbook page pain T^T.
 * And a little more to discover on the way.
 
 ---
@@ -79,6 +79,7 @@ https://ro0oo.github.io/vcc-RofuryPlus/index.json
 ## Links
 
 * 🎬 **Demo video:** https://youtu.be/0sSigj1W59g
+* 📦 **VPM listing:** https://ro0oo.github.io/vcc-RofuryPlus/
 * 🐙 **Source:** https://github.com/ro0oo/vcc-RofuryPlus
 
 ## Community
