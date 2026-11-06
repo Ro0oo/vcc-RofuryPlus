@@ -7,7 +7,6 @@
 <br />
 
 [![Add to VCC](https://img.shields.io/badge/+%20Add%20to%20VCC-ff8a1e?style=for-the-badge&logoColor=white)](https://ro0oo.github.io/vcc-RofuryPlus/)
-[![Listing](https://img.shields.io/badge/VPM%20Listing-2bc4f0?style=for-the-badge)](https://ro0oo.github.io/vcc-RofuryPlus/)
 
 </div>
 
