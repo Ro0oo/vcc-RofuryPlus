@@ -79,7 +79,6 @@ https://ro0oo.github.io/vcc-RofuryPlus/index.json
 ## Links
 
 * 🎬 **Demo video:** https://youtu.be/0sSigj1W59g
-* 📦 **VPM listing:** https://ro0oo.github.io/vcc-RofuryPlus/
 * 🐙 **Source:** https://github.com/ro0oo/vcc-RofuryPlus
 
 ## Community
