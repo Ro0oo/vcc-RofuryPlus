@@ -44,7 +44,7 @@ https://ro0oo.github.io/vcc-RofuryPlus/index.json
 * **The Blendshape Panel** — make blendshapes fun and easy. A few clicks is all you need.
 * **UI Improvements!** — a pile of Unity upgrades to the Hierarchy, Inspector and Project tab.
 * **Where are my toggles?** — a new Find button on toggles. No more endless scrolling.
-* **Icon Panel** — snap menu icons for your toggles and folders straight from your avatar. No more screenshot, crop, import dance.
+* **Icon Panel** — snap menu icons for your toggles and folders straight from your avatar.
 * **Leader Toggle** — ONE Toggle to Rule Them ALL. A toggle that turns other toggles on and off.
 * **Conflict Force** — let two toggles turn the same object on and off without VRCFury yelling at you.
 
